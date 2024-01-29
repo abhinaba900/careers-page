@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Box, Heading, Text, Image } from "@chakra-ui/react";
 import ReactCardFlip from "react-card-flip";
 import Aimage from "../images/Group 4880@2x.png";
@@ -8,35 +8,39 @@ import Dimage from "../images/Group 4883@2x.png";
 import Eimage from "../images/Group 4878@2x.png";
 function CompanyValues() {
   // This state will control the flip state of each card
-  const [isFlipped, setIsFlipped] = useState(Array(5).fill(false));
-  const flipTimeouts = useRef(Array(5).fill(null)).current;
+const [isFlipped, setIsFlipped] = useState(Array(5).fill(false));
+const flipTimeoutsRef = useRef([]);
 
-  const handleClick = (index) => {
-    // Flip the card of the specified index
-    let newFlippedState = [...isFlipped];
-    newFlippedState[index] = !newFlippedState[index];
-    setIsFlipped(newFlippedState);
+useEffect(() => {
+  // Clear timeouts when the component unmounts
+  return () => {
+    flipTimeoutsRef.current.forEach(clearTimeout);
   };
+}, []);
 
+const handleClick = (index) => {
+  setIsFlipped((prevFlipped) =>
+    prevFlipped.map((flip, i) => (i === index ? !flip : flip))
+  );
+};
 
-    const handleMouseEnter = (index) => {
-      clearTimeout(flipTimeouts[index]); // Clear any existing timeout
-      flipTimeouts[index] = setTimeout(() => {
-        let newFlippedState = [...isFlipped];
-        newFlippedState[index] = true;
-        setIsFlipped(newFlippedState);
-      }, 500); // Delay the flip
-    };
+const handleMouseEnter = (index) => {
+  clearTimeout(flipTimeoutsRef.current[index]);
+  flipTimeoutsRef.current[index] = setTimeout(() => {
+    setIsFlipped((prevFlipped) =>
+      prevFlipped.map((flip, i) => (i === index ? !flip : flip))
+    );
+  }, 500);
+};
 
-    const handleMouseLeave = (index) => {
-      clearTimeout(flipTimeouts[index]); // Clear any existing timeout
-      flipTimeouts[index] = setTimeout(() => {
-        let newFlippedState = [...isFlipped];
-        newFlippedState[index] = false;
-        setIsFlipped(newFlippedState);
-      }, 500); // Delay the unflip
-    };
- 
+const handleMouseLeave = (index) => {
+  clearTimeout(flipTimeoutsRef.current[index]);
+  flipTimeoutsRef.current[index] = setTimeout(() => {
+    setIsFlipped((prevFlipped) =>
+      prevFlipped.map((flip, i) => (i === index ? !flip : flip))
+    );
+  }, 500);
+};
 
   return (
     <Box>
@@ -63,7 +67,13 @@ function CompanyValues() {
           lg: "repeat(2, 1fr)",
           xl: "repeat(5, 1fr)",
         }}
+        gridAutoFlow={{ md: "row dense" }} // This ensures the grid items are filled sequentially
         gap={"1em"}
+        _after={{
+          content: `""`,
+          display: { md: "block", lg: "none" }, // Only display pseudo-element on 'md'
+          gridColumn: "1 / -1", // Span full width
+        }}
       >
         {/* Example for one card, replicate as needed */}
         <Box w={"100%"} height={"100%"} cursor={"pointer"}>
