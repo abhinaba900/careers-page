@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Box, Heading, Text, Image } from "@chakra-ui/react";
 import ReactCardFlip from "react-card-flip";
 import Aimage from "../images/Group 4880@2x.png";
@@ -9,6 +9,7 @@ import Eimage from "../images/Group 4878@2x.png";
 function CompanyValues() {
   // This state will control the flip state of each card
   const [isFlipped, setIsFlipped] = useState(Array(5).fill(false));
+  const flipTimeouts = useRef(Array(5).fill(null)).current;
 
   const handleClick = (index) => {
     // Flip the card of the specified index
@@ -17,6 +18,24 @@ function CompanyValues() {
     setIsFlipped(newFlippedState);
   };
 
+
+    const handleMouseEnter = (index) => {
+      clearTimeout(flipTimeouts[index]); // Clear any existing timeout
+      flipTimeouts[index] = setTimeout(() => {
+        let newFlippedState = [...isFlipped];
+        newFlippedState[index] = true;
+        setIsFlipped(newFlippedState);
+      }, 500); // Delay the flip
+    };
+
+    const handleMouseLeave = (index) => {
+      clearTimeout(flipTimeouts[index]); // Clear any existing timeout
+      flipTimeouts[index] = setTimeout(() => {
+        let newFlippedState = [...isFlipped];
+        newFlippedState[index] = false;
+        setIsFlipped(newFlippedState);
+      }, 500); // Delay the unflip
+    };
  
 
   return (
@@ -55,7 +74,9 @@ function CompanyValues() {
           >
             {/* Front of the Card */}
             <Box
-              onClick={() => handleClick(0)}
+              // onClick={() => handleClick(0)}
+              onMouseEnter={() => handleMouseEnter(0)}
+              onMouseLeave={() => handleMouseLeave(0)}
               backgroundImage={
                 "url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQr-FtYL6QU8ajatAhF_Ob91xWi26QQ7ST1dwdmFJnwvrqID5Bb)"
               }
@@ -118,6 +139,8 @@ function CompanyValues() {
             {/* Front of the Card */}
             <Box
               onClick={() => handleClick(1)}
+              onMouseEnter={() => handleMouseEnter(1)}
+              onMouseLeave={() => handleMouseLeave(1)}
               backgroundImage={
                 "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzsU3B8fl6BdPDQtHbLIP_mKlnh1AiyU4z7GaWknZgJcxi0t1I)"
               }
@@ -180,6 +203,8 @@ function CompanyValues() {
             {/* Front of the Card */}
             <Box
               onClick={() => handleClick(2)}
+              onMouseEnter={() => handleMouseEnter(2)}
+              onMouseLeave={() => handleMouseLeave(2)}
               backgroundImage={
                 "url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTBFm6qNilqF9KJiCvL4NefRXZUXaSOqOYJFBY6lTB2SEKTcqPB)"
               }
@@ -242,6 +267,8 @@ function CompanyValues() {
             {/* Front of the Card */}
             <Box
               onClick={() => handleClick(3)}
+              onMouseEnter={() => handleMouseEnter(3)}
+              onMouseLeave={() => handleMouseLeave(3)}
               backgroundImage={
                 "url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQen_i5fqzQOpZAUYNumSb1EmExGlhib5OFwpnPV_fAghA_D8in)"
               }
@@ -304,6 +331,8 @@ function CompanyValues() {
             {/* Front of the Card */}
             <Box
               onClick={() => handleClick(4)}
+              onMouseEnter={() => handleMouseEnter(4)}
+              onMouseLeave={() => handleMouseLeave(4)}
               backgroundImage={
                 "url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQen_i5fqzQOpZAUYNumSb1EmExGlhib5OFwpnPV_fAghA_D8in)"
               }
