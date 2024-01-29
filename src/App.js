@@ -8,7 +8,9 @@ function App() {
   return (
     <Box className="App">
       <TopSectionJoinUs />
-      <CompanyValues />
+      <Box w={"90%"} m={"auto"}>
+        <CompanyValues />
+      </Box>
     </Box>
   );
 }
