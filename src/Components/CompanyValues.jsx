@@ -9,14 +9,28 @@ import Eimage from "../images/Group 4878@2x.png";
 function CompanyValues() {
   // This state will control the flip state of each card
 const [isFlipped, setIsFlipped] = useState(Array(5).fill(false));
-const flipTimeoutsRef = useRef([]);
+ const flipTimeoutsRef = useRef([]);
 
-useEffect(() => {
-  // Clear timeouts when the component unmounts
-  return () => {
-    flipTimeoutsRef.current.forEach(clearTimeout);
-  };
-}, []);
+ useEffect(() => {
+   return () => {
+     flipTimeoutsRef.current.forEach(clearTimeout);
+   };
+ }, []);
+
+ const handleMouseEnter = (index) => {
+   clearTimeout(flipTimeoutsRef.current[index]);
+   setIsFlipped((prevFlipped) =>
+     prevFlipped.map((flip, i) => (i === index ? true : flip))
+   );
+ };
+
+ const handleMouseLeave = (index) => {
+   flipTimeoutsRef.current[index] = setTimeout(() => {
+     setIsFlipped((prevFlipped) =>
+       prevFlipped.map((flip, i) => (i === index ? false : flip))
+     );
+   }, 500);
+ };
 
 const handleClick = (index) => {
   setIsFlipped((prevFlipped) =>
@@ -24,23 +38,7 @@ const handleClick = (index) => {
   );
 };
 
-const handleMouseEnter = (index) => {
-  clearTimeout(flipTimeoutsRef.current[index]);
-  flipTimeoutsRef.current[index] = setTimeout(() => {
-    setIsFlipped((prevFlipped) =>
-      prevFlipped.map((flip, i) => (i === index ? !flip : flip))
-    );
-  }, 500);
-};
 
-const handleMouseLeave = (index) => {
-  clearTimeout(flipTimeoutsRef.current[index]);
-  flipTimeoutsRef.current[index] = setTimeout(() => {
-    setIsFlipped((prevFlipped) =>
-      prevFlipped.map((flip, i) => (i === index ? !flip : flip))
-    );
-  }, 500);
-};
 
   return (
     <Box>
@@ -112,7 +110,7 @@ const handleMouseLeave = (index) => {
 
             {/* Back of the Card */}
             <Box
-              onClick={() => handleClick(0)}
+              // onClick={() => handleClick(0)}
               h="20em"
               display={"flex"}
               flexDirection={"column"}
@@ -148,7 +146,7 @@ const handleMouseLeave = (index) => {
           <ReactCardFlip isFlipped={isFlipped[1]} flipDirection="horizontal">
             {/* Front of the Card */}
             <Box
-              onClick={() => handleClick(1)}
+              // onClick={() => handleClick(1)}
               onMouseEnter={() => handleMouseEnter(1)}
               onMouseLeave={() => handleMouseLeave(1)}
               backgroundImage={
@@ -176,7 +174,7 @@ const handleMouseLeave = (index) => {
 
             {/* Back of the Card */}
             <Box
-              onClick={() => handleClick(1)}
+              // onClick={() => handleClick(1)}
               h="20em"
               display={"flex"}
               flexDirection={"column"}
@@ -212,7 +210,7 @@ const handleMouseLeave = (index) => {
           <ReactCardFlip isFlipped={isFlipped[2]} flipDirection="horizontal">
             {/* Front of the Card */}
             <Box
-              onClick={() => handleClick(2)}
+              // onClick={() => handleClick(2)}
               onMouseEnter={() => handleMouseEnter(2)}
               onMouseLeave={() => handleMouseLeave(2)}
               backgroundImage={
@@ -240,7 +238,7 @@ const handleMouseLeave = (index) => {
 
             {/* Back of the Card */}
             <Box
-              onClick={() => handleClick(2)}
+              // onClick={() => handleClick(2)}
               h="20em"
               display={"flex"}
               flexDirection={"column"}
@@ -276,7 +274,7 @@ const handleMouseLeave = (index) => {
           <ReactCardFlip isFlipped={isFlipped[3]} flipDirection="horizontal">
             {/* Front of the Card */}
             <Box
-              onClick={() => handleClick(3)}
+              // onClick={() => handleClick(3)}
               onMouseEnter={() => handleMouseEnter(3)}
               onMouseLeave={() => handleMouseLeave(3)}
               backgroundImage={
@@ -304,7 +302,7 @@ const handleMouseLeave = (index) => {
 
             {/* Back of the Card */}
             <Box
-              onClick={() => handleClick(3)}
+              // onClick={() => handleClick(3)}
               h="20em"
               display={"flex"}
               flexDirection={"column"}
@@ -340,7 +338,7 @@ const handleMouseLeave = (index) => {
           <ReactCardFlip isFlipped={isFlipped[4]} flipDirection="horizontal">
             {/* Front of the Card */}
             <Box
-              onClick={() => handleClick(4)}
+              // onClick={() => handleClick(4)}
               onMouseEnter={() => handleMouseEnter(4)}
               onMouseLeave={() => handleMouseLeave(4)}
               backgroundImage={
@@ -368,7 +366,7 @@ const handleMouseLeave = (index) => {
 
             {/* Back of the Card */}
             <Box
-              onClick={() => handleClick(4)}
+              // onClick={() => handleClick(4)}
               h="20em"
               display={"flex"}
               flexDirection={"column"}
