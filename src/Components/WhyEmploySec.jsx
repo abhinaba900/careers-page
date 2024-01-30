@@ -4,10 +4,10 @@ function WhyEmploySec() {
   return (
     <Box
       display={"flex"}
-      flexDirection={{ base: "column", md: "row" }}
+      flexDirection={{ base: "column", md: "column", lg: "row" }}
       alignItems={"center"}
       p={"2%"}
-      gap={"2%"}
+      gap={"1em"}
       mt={"3%"}
       mb={"5%"}
     >
@@ -20,7 +20,7 @@ function WhyEmploySec() {
       </Heading>
       <Text
         fontWeight={"bold 400"}
-        w={{ base: "100%", md: "70%" }}
+        w={{ base: "100%", md: "100%", lg: "70%" }}
         fontSize={{ base: "0.75em", md: "0.899em" }}
         color={"#525252"}
       >
