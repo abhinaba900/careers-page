@@ -27,3 +27,9 @@ p{
 }
 
 
+.leftAlignedPagination .swiper-pagination-bullets {
+  text-align: left;
+  left: 5%;
+  right: auto;
+}
+

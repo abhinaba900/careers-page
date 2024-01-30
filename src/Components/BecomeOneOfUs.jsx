@@ -1,7 +1,6 @@
 import React from "react";
-import { Box, Heading, Text, Image } from "@chakra-ui/react";
-
-function TopSectionJoinUs() {
+import { Box, Heading, Text, Image, Button } from "@chakra-ui/react";
+function BecomeOneOfUs() {
   return (
     <Box
       display={"flex"}
@@ -47,9 +46,19 @@ function TopSectionJoinUs() {
           Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod tempor
           enim ad minim veniam, quis nostrud
         </Text>
+        <Button
+          bg={"#ED1C24"}
+          dropShadow={"0px 4px 4px rgba(0, 0, 0, 0.25)"}
+          color={"white"}
+          w={"10em"}
+          h={"3em"}
+          mt={"2em"}
+        >
+          APPLY
+        </Button>
       </Box>
     </Box>
   );
 }
 
-export default TopSectionJoinUs;
+export default BecomeOneOfUs;

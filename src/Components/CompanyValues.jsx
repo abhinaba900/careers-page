@@ -8,37 +8,35 @@ import Dimage from "../images/Group 4883@2x.png";
 import Eimage from "../images/Group 4878@2x.png";
 function CompanyValues() {
   // This state will control the flip state of each card
-const [isFlipped, setIsFlipped] = useState(Array(5).fill(false));
- const flipTimeoutsRef = useRef([]);
+  const [isFlipped, setIsFlipped] = useState(Array(5).fill(false));
+  const flipTimeoutsRef = useRef([]);
 
- useEffect(() => {
-   return () => {
-     flipTimeoutsRef.current.forEach(clearTimeout);
-   };
- }, []);
+  useEffect(() => {
+    return () => {
+      flipTimeoutsRef.current.forEach(clearTimeout);
+    };
+  }, []);
 
- const handleMouseEnter = (index) => {
-   clearTimeout(flipTimeoutsRef.current[index]);
-   setIsFlipped((prevFlipped) =>
-     prevFlipped.map((flip, i) => (i === index ? true : flip))
-   );
- };
+  const handleMouseEnter = (index) => {
+    clearTimeout(flipTimeoutsRef.current[index]);
+    setIsFlipped((prevFlipped) =>
+      prevFlipped.map((flip, i) => (i === index ? true : flip))
+    );
+  };
 
- const handleMouseLeave = (index) => {
-   flipTimeoutsRef.current[index] = setTimeout(() => {
-     setIsFlipped((prevFlipped) =>
-       prevFlipped.map((flip, i) => (i === index ? false : flip))
-     );
-   }, 500);
- };
+  const handleMouseLeave = (index) => {
+    flipTimeoutsRef.current[index] = setTimeout(() => {
+      setIsFlipped((prevFlipped) =>
+        prevFlipped.map((flip, i) => (i === index ? false : flip))
+      );
+    }, 500);
+  };
 
-const handleClick = (index) => {
-  setIsFlipped((prevFlipped) =>
-    prevFlipped.map((flip, i) => (i === index ? !flip : flip))
-  );
-};
-
-
+  const handleClick = (index) => {
+    setIsFlipped((prevFlipped) =>
+      prevFlipped.map((flip, i) => (i === index ? !flip : flip))
+    );
+  };
 
   return (
     <Box>
@@ -57,7 +55,7 @@ const handleClick = (index) => {
       </Box>
       <Box
         w={"100%"}
-        h={"50vh"}
+        h={"100%"}
         display={"grid"}
         gridTemplateColumns={{
           base: "repeat(1, 1fr)",

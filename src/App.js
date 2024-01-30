@@ -3,6 +3,10 @@ import './App.css';
 import { Box } from '@chakra-ui/react';
 import TopSectionJoinUs from './Components/TopSectionJoinUs';
 import CompanyValues from './Components/CompanyValues';
+import GLOBALPRESENCE from './Components/GLOBALPRESENCE';
+import BecomeOneOfUs from './Components/BecomeOneOfUs';
+import WhyEmploySec from './Components/WhyEmploySec';
+import WhyEmploySecSlider from './Components/WhyEmploySecSlider';
 
 function App() {
   return (
@@ -10,6 +14,18 @@ function App() {
       <TopSectionJoinUs />
       <Box w={"90%"} m={"auto"}>
         <CompanyValues />
+      </Box>
+      <Box w={"90%"} m={"auto"}>
+        <GLOBALPRESENCE />
+      </Box>
+      <Box w={"90%"} m={"auto"}>
+        <BecomeOneOfUs />
+      </Box>
+      <Box w={"90%"} m={"auto"}>
+        <WhyEmploySec />
+      </Box>
+      <Box w={"90%"} m={"auto"} >
+        <WhyEmploySecSlider />
       </Box>
     </Box>
   );
