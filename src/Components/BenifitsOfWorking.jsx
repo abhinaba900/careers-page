@@ -21,13 +21,13 @@ function BenifitsOfWorking() {
             <Image src={FirstImg} alt="first image" />
             <Box
               position={"absolute"}
-              top={{ base: "61%", md: "60%" }}
+              top={{ base: "61%", md: "65%" }}
               display={{ base: "none", md: "none", lg: "flex" }}
-              left={"39%"}
+              left={"42%"}
             >
               <Image
-                w={{ base: "30%", md: "100%" }}
-                h={"100%"}
+                w={"15em"}
+                h={"6em"}
                 css={{
                   "::-webkit-backface-visibility": "hidden",
                   "::-ms-transform": "translateZ(0)",
