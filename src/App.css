@@ -33,3 +33,21 @@ p{
   right: auto;
 }
 
+.menu ul {
+  /* Define initial state styles */
+  transition: all 0.5s ease;
+}
+
+.menu.open ul {
+  /* Define styles for open state */
+}
+
+.arrow {
+  /* Define initial state styles */
+  transition: transform 0.2s ease;
+}
+
+.arrow.rotated {
+  /* Define rotated state */
+  transform: rotate(180deg);
+}

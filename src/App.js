@@ -9,6 +9,7 @@ import WhyEmploySec from "./Components/WhyEmploySec";
 import WhyEmploySecSlider from "./Components/WhyEmploySecSlider";
 import BenifitsOfWorking from "./Components/BenifitsOfWorking";
 import GallerySection from "./Components/GallerySection";
+import WorldMap from "./Components/WorldMap";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
       </Box>
       <Box w={"90%"} m={"auto"}>
         <GLOBALPRESENCE />
+      </Box>
+      <Box w={"90%"} m={"auto"}>
+        <WorldMap />
       </Box>
       <Box w={"90%"} m={"auto"}>
         <BecomeOneOfUs />
