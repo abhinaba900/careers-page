@@ -1,0 +1,49 @@
+/* Styles for the Gallery Swiper */
+.gallerySwiper .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallerySwiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallerySwiper {
+  height: 80%; /* Adjust this as necessary */
+  width: 100%;
+}
+
+/* Styles for the Thumbnail Swiper */
+.thumbnailSwiper {
+  height: 20%; /* Adjust this as necessary */
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.thumbnailSwiper .swiper-slide {
+  background-size: cover;
+  background-position: center;
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.thumbnailSwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.thumbnailSwiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

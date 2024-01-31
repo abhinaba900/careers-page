@@ -32,7 +32,7 @@ function App() {
       <Box w={"90%"} m={"auto"}>
         <BenifitsOfWorking />
       </Box>
-      <Box w={"90%"} m={"auto"}>
+      <Box w={"90%"} h={"80vh"} m={"auto"} mt={"1em"} mb={"1em"}>
         <GallerySection />
       </Box>
     </Box>
