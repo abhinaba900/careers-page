@@ -10,10 +10,12 @@ import WhyEmploySecSlider from "./Components/WhyEmploySecSlider";
 import BenifitsOfWorking from "./Components/BenifitsOfWorking";
 import GallerySection from "./Components/GallerySection";
 import WorldMap from "./Components/WorldMap";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
     <Box className="App">
+      <Navbar />
       <TopSectionJoinUs />
       <Box w={"90%"} m={"auto"}>
         <CompanyValues />
